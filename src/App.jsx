@@ -9,20 +9,25 @@ const App = () => {
 
   useEffect(() => {
     async function allData() {
-      const { data } = await axios.get("https://dummyjson.com/products");
-      setAllData(data.data.products);
+      const  allAPIdata  = await axios.get("https://dummyjson.com/products");
+      setAllData(allAPIdata.data.products);
     }
     allData();
   }, []);
 
   return (
-    <>
-      <div>
-        {
-          allData.map((item) => <h1 key={item.id}>{item.title}</h1>)
-        }
-      </div>
-    </>
+<>
+
+{
+  allData.map(item=>(
+<>
+    <h1>{item.title} </h1>
+    <h1>{item.price} </h1>
+</>
+
+  ))
+}
+</>
   );
 };
 
